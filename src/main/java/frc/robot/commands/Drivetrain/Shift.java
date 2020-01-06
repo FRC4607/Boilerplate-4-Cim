@@ -3,7 +3,7 @@ package frc.robot.commands.Drivetrain;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class Shift extends Command{
+public class Shift extends Command {
 
   public boolean mIsFinished = true;
   
