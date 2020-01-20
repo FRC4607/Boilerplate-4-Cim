@@ -21,4 +21,11 @@ public class RobotMap {
   public static int kHighGearSolenoid = 0;
   public static int kLowGearSolenoid = 1;
   public static int kPCMId = 30;
+
+  // Shooter
+  public static final int kRightFlyWheelLeader = 1;
+	public static final int kLeftFlyWheelFollower = 2;
+  public static final int kTurretSpin = 3;
+
+  
 }

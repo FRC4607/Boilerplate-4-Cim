@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "C:\\Users\\C.I.S. 3\\VSCode git\\2020-Comp-Bot"
+		},
+		{
+			"path": "C:\\Users\\C.I.S. 3\\VSCode git\\Boilerplate-2020"
+		},
+		{
+			"path": "C:\\Users\\C.I.S. 3\\VSCode git\\Boilerplate-4-Cim"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}

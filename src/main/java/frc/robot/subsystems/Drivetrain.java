@@ -26,9 +26,7 @@ public class Drivetrain extends Subsystem {
 
   // Map the CIM motors to the TalonSRX's
   public static WPI_TalonSRX mLeftFollowerA  = new WPI_TalonSRX(RobotMap.kLeftFollerAId);
-  public static WPI_TalonSRX mLeftFollowerB  = new WPI_TalonSRX(RobotMap.kLeftFollwerBId);
   public static WPI_TalonSRX mLeftLeader     = new WPI_TalonSRX(RobotMap.kLeftLeaderId);
-  public static WPI_TalonSRX mRightFollowerB = new WPI_TalonSRX(RobotMap.kRightFollowerBId);
   public static WPI_TalonSRX mRightFollowerA = new WPI_TalonSRX(RobotMap.kRightFollowerAId);
   public static WPI_TalonSRX mRightLeader    = new WPI_TalonSRX(RobotMap.kRightLeaderId);
 
@@ -44,17 +42,13 @@ public class Drivetrain extends Subsystem {
   public static void initDefaultSetup() {
     // Set the front and middle motors to be the followers of the rear motors
     mRightFollowerA.set(ControlMode.Follower, RobotMap.kRightLeaderId);
-    mRightFollowerB.set(ControlMode.Follower, RobotMap.kRightLeaderId);
     mLeftFollowerA.set(ControlMode.Follower, RobotMap.kLeftLeaderId);
-    mLeftFollowerB.set(ControlMode.Follower, RobotMap.kLeftLeaderId);
 
     // Set Neutral mode
     mLeftLeader.setNeutralMode(NeutralMode.Brake);
     mLeftFollowerA.setNeutralMode(NeutralMode.Brake);
-    mLeftFollowerB.setNeutralMode(NeutralMode.Brake);
     mRightLeader.setNeutralMode(NeutralMode.Brake);
     mRightFollowerA.setNeutralMode(NeutralMode.Brake);
-    mRightFollowerB.setNeutralMode(NeutralMode.Brake);
 
     diffDrive.setSafetyEnabled(false);
 
@@ -101,19 +95,15 @@ public void setHighGear(boolean wantsHighGear) {
     if (wantsBreakMode == true) {
       mLeftLeader.setNeutralMode(NeutralMode.Brake);
       mLeftFollowerA.setNeutralMode(NeutralMode.Brake);
-      mLeftFollowerB.setNeutralMode(NeutralMode.Brake);
       mRightLeader.setNeutralMode(NeutralMode.Brake);
       mRightFollowerA.setNeutralMode(NeutralMode.Brake);
-      mRightFollowerB.setNeutralMode(NeutralMode.Brake);
       mIsBrakeMode = true;
       mLogger.info("Drivetrain set to brake mode");
    } else if (wantsBreakMode == false) {
       mLeftLeader.setNeutralMode(NeutralMode.Coast);
       mLeftFollowerA.setNeutralMode(NeutralMode.Coast);
-      mLeftFollowerB.setNeutralMode(NeutralMode.Coast);
       mRightLeader.setNeutralMode(NeutralMode.Coast);
       mRightFollowerA.setNeutralMode(NeutralMode.Coast);
-      mRightFollowerB.setNeutralMode(NeutralMode.Coast);
       mIsBrakeMode = false;
       mLogger.info("Drivetrain set to coast mode");
    }
@@ -191,10 +181,8 @@ public void SelfTest() {
   setBrakeMode(false);
   mLeftLeader.set(ControlMode.PercentOutput, 0.0);
   mLeftFollowerA.set(ControlMode.PercentOutput, 0.0);
-  mLeftFollowerB.set(ControlMode.PercentOutput, 0.0);
   mRightLeader.set(ControlMode.PercentOutput, 0.0);
   mRightFollowerA.set(ControlMode.PercentOutput, 0.0);
-  mRightFollowerB.set(ControlMode.PercentOutput, 0.0);
 
   // For each motor, polarity, gear: drive at 50% power for 2 seconds and capture encoder/power data
   mSelftestLogger.info("Motor ID, High Gear, Motor Output, Desired Motor Output Percent, Set Motor Output Percent, Motor Output Voltage, Sensor Position, Sensor Velocity");
@@ -202,31 +190,21 @@ public void SelfTest() {
   SelfTestMeasurement(mRightLeader, true, true);
   SelfTestMeasurement(mLeftFollowerA, true, true, mLeftLeader);
   SelfTestMeasurement(mRightFollowerA, true, true, mRightLeader);
-  SelfTestMeasurement(mLeftFollowerB, true, true, mLeftLeader);
-  SelfTestMeasurement(mRightFollowerB, true, true, mRightLeader);
   SelfTestMeasurement(mLeftLeader, false, true);
   SelfTestMeasurement(mRightLeader, false, true);
   SelfTestMeasurement(mLeftFollowerA, false, true, mLeftLeader);
   SelfTestMeasurement(mRightFollowerA, false, true, mRightLeader);
-  SelfTestMeasurement(mLeftFollowerB, false, true, mLeftLeader);
-  SelfTestMeasurement(mRightFollowerB, false, true, mRightLeader);
   SelfTestMeasurement(mLeftLeader, true, false);
   SelfTestMeasurement(mRightLeader, true, false);
   SelfTestMeasurement(mLeftFollowerA, true, false, mLeftLeader);
   SelfTestMeasurement(mRightFollowerA, true, false, mRightLeader);
-  SelfTestMeasurement(mLeftFollowerB, true, false, mLeftLeader);
-  SelfTestMeasurement(mRightFollowerB, true, false, mRightLeader);
   SelfTestMeasurement(mLeftLeader, false, false);
   SelfTestMeasurement(mRightLeader, false, false);
   SelfTestMeasurement(mLeftFollowerA, false, false, mLeftLeader);
   SelfTestMeasurement(mRightFollowerA, false, false, mRightLeader);
-  SelfTestMeasurement(mLeftFollowerB, false, false, mLeftLeader);
-  SelfTestMeasurement(mRightFollowerB, false, false, mRightLeader);
 
   // Return back to follower mode and set to open loop mode
   mLeftFollowerA.set(ControlMode.Follower, RobotMap.kLeftLeaderId);
-  mLeftFollowerB.set(ControlMode.Follower, RobotMap.kLeftLeaderId);
-  mRightFollowerA.set(ControlMode.Follower, RobotMap.kRightLeaderId);
-  mRightFollowerB.set(ControlMode.Follower, RobotMap.kRightLeaderId);
+  mRightFollowerA.set(ControlMode.Follower, RobotMap.kRightLeaderId); 
  }
 }
