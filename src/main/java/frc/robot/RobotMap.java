@@ -10,12 +10,13 @@ public class RobotMap {
   public static int kRightFollowerAId = 11;
   public static int kRightFollowerBId  = 12;
 
+  // Driver turning gain
+  public static double kDriverZJoystickGain = -0.7;
+
   // Joysticks
   public static int kDriveJoystickId  = 0;
+  public static int kOperatorJoystickId  = 1;
   public static double kJoystickDeadband = 0.05;
-
-  // Driver turning gain
-  public static double kDriverZJoystickGain= -0.7;
 
   // Pneumatics port constants
   public static int kHighGearSolenoid = 0;
@@ -23,9 +24,9 @@ public class RobotMap {
   public static int kPCMId = 30;
 
   // Shooter
-  public static final int kRightFlyWheelLeader = 1;
-	public static final int kLeftFlyWheelFollower = 2;
-  public static final int kTurretSpin = 3;
-
+  public static int kRightFlyWheelLeader = 1;
+	public static int kLeftFlyWheelFollower = 2;
+  public static int kTurretSpin = 3;
+  public static int kTransferWheel  = 4;
   
 }
